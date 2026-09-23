@@ -17,7 +17,9 @@ or
 cd Naive
 ```
 
-### pa11y: 
+### Dynamic Runtime DOM Scanners:
+
+#### pa11y: 
 
 Uses axe and HTML_CodeSniffer
 
@@ -41,7 +43,7 @@ Report errors in JSON form save to file (site must be running)
 npx pa11y-ci --json > pa11y-results.json
 ```
 
-### axe-core:
+#### axe-core:
 
 Starts the backend and the vite server, runs pa11y, shuts down both
 ```
@@ -61,6 +63,15 @@ npm run axe:json --silent
 Report errors in JSON form save to file (site must be running)
 ```
 npm run axe:json --silent > axe-results.json
+```
+
+### Static AST Scanner:
+
+#### ESLint:
+
+Report Errors with reference to code base
+```
+npm run lint
 ```
 
 ## Credits

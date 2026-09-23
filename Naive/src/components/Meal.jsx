@@ -13,7 +13,7 @@ export default function Meal({ meal }) {
     return (
         <li className="meal-item">
             <article>
-                <img src={`http://localhost:3000/${meal.image}`} alt={meal.name}/>
+                <img src={`http://localhost:3000/${meal.image}`}/>
                 <div>
                     <h3>{meal.name}</h3>
                     <p className="meal-item-price">{currencyFormatter.format(meal.price)}</p>

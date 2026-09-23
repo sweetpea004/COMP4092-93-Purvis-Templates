@@ -1,0 +1,36 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 500,
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    {
+      "url": "http://localhost:5173/",
+      "runners": ["axe", "htmlcs"],
+      "actions": ["wait for element #meals to be visible"]
+    },
+    {
+      "url": "http://localhost:5173/?cart-open",
+      "runners": ["axe", "htmlcs"],
+      "actions": [
+        "wait for element #meals to be visible",
+        "click element #main-header nav button",
+        "wait for element dialog.modal[open] to be visible"
+      ]
+    },
+    {
+      "url": "http://localhost:5173/?wcag22",
+      "runners": ["axe"],
+      "rules": ["target-size"],
+      "actions": ["wait for element #meals to be visible"]
+    }
+  ]
+}

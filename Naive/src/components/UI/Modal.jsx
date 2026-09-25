@@ -14,8 +14,20 @@ export default function Modal({ children, open, className = '', onClose }) {
         return () => modal.close();
     }, [open])
 
+    function handleBackdropClick(event) {
+        if (event.target === event.currentTarget && onClose) {
+            onClose();
+        }
+    }
+
     return createPortal(
-        <dialog ref={dialog} className={`modal ${className}`} onClose={onClose}>
+        <dialog
+            ref={dialog}
+            className={`modal ${className}`}
+            aria-hidden="true"
+            onCancel={(event) => event.preventDefault()}
+            onClick={handleBackdropClick}
+        >
             {children}
         </dialog>, 
         document.getElementById('modal')

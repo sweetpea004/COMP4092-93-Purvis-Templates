@@ -3,8 +3,8 @@ import { useContext } from "react";
 import Modal from "./UI/Modal";
 import CartContext from "../store/CartContent";
 import { currencyFormatter } from "../util/formatting";
-import Button from "./UI/Button";
 import UserProgressContext from "../store/UserProgressContext";
+import Button from "./UI/Button";
 import CartItem from "./CartItem";
 
 export default function Cart() {
@@ -42,9 +42,9 @@ export default function Cart() {
             </ul>
             <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
             <p className="modal-actions">
-                <Button textOnly onClick={handleCloseCart}>Close</Button>
+                <Button className="text-button" onClick={handleCloseCart}>Close</Button>
                 {cartCtx.items.length > 0 && 
-                    <Button onClick={handleOpenCheckout}>Go to Checkout</Button>
+                    <Button className="fake-button" onClick={handleOpenCheckout}>Go to Checkout</Button>
                 }
             </p>
         </Modal>

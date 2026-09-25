@@ -19,11 +19,14 @@ export default function Header() {
     return (
         <header id="main-header">
             <div id="title">
-                <img src={logoImg} alt="A restaurant logo" />
-                <h1>Food Order</h1>
+                <img src={logoImg} tabIndex={1} />
+                <div className="site-title">Food Order</div>
             </div>
             <nav>
-                <Button textOnly onClick={handleShowCart}>Cart ({totalCartItems})</Button>
+                <Button textOnly onClick={handleShowCart}>
+                    <span aria-hidden="true">Cart ({totalCartItems})</span>
+                </Button>
+                <Button textOnly onClick={handleShowCart}>+</Button>
             </nav>
         </header>
     );

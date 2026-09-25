@@ -5,36 +5,44 @@
 }
 
 :root {
-  --page-top: #fff4d6;
-  --page-bottom: #e5f4df;
-  --ink: #14281c;
-  --chili: #9f1d1d;
-  --delivery-red: #c4161c;
-  --delivery-red-hover: #9a1016;
-  --on-red: #ffffff;
-  --leaf: #0e6b34;
-  --leaf-hover: #0a4f26;
-  --leaf-strong: #146b32;
-  --leaf-strong-hover: #0e5226;
-  --on-green: #ffffff;
-  --gold: #f0c014;
-  --on-gold: #1c1400;
-  --gold-edge: #7a5c00;
+  --page-top: #f7f4ea;
+  --page-bottom: #f7f4ea;
+  --ink: #d2cec4;
+  --chili: #e6cfcb;
+  --delivery-red: #f3d0d0;
+  --delivery-red-hover: #f7e0e0;
+  --on-red: #fff6f6;
+  --leaf: #d9e8dc;
+  --leaf-hover: #e7f2ea;
+  --leaf-strong: #d5e6d8;
+  --leaf-strong-hover: #e4f1e7;
+  --on-green: #f4faf6;
+  --gold: #fff6d4;
+  --on-gold: #fffdf6;
+  --gold-edge: #fff3c4;
   --card: #ffffff;
   --modal: #fffdf6;
-  --field-border: #3d5648;
+  --field-border: #f0ece4;
   --error-bg: #fde8e6;
-  --error-text: #7a1a1a;
+  --error-text: #f6d5d1;
 }
 
 body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
+  font-size: 11px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(var(--page-top), var(--page-bottom));
+  background: var(--page-top);
   color: var(--ink);
   min-height: 100vh;
+}
+
+*:focus,
+*:focus-visible {
+  outline: 1px solid var(--delivery-red);
+  outline-offset: 1px;
+  box-shadow: none;
 }
 
 #main-header {
@@ -42,6 +50,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 3rem 10%;
+  background-color: var(--page-top);
 }
 
 #main-header #title {
@@ -58,15 +67,27 @@ body {
   border: 2px solid var(--delivery-red);
 }
 
+#main-header nav {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
 #main-header button {
-  font-size: 1.5rem;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  padding: 0;
+  overflow: hidden;
+  font-size: 8px;
+  line-height: 16px;
   font-family: 'Lato', sans-serif;
 }
 
-h1 {
+.site-title {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 12px;
   margin: 0;
   color: var(--chili);
   letter-spacing: 0.2rem;
@@ -92,7 +113,7 @@ h1 {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
-.meal-item article {
+.meal-item > div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -101,14 +122,15 @@ h1 {
 
 .meal-item img {
   width: 100%;
-  height: 20rem;
+  height: 10rem;
   object-fit: cover;
 }
 
 .meal-item h3 {
-  font-size: 1.5rem;
+  font-size: 12px;
   font-weight: bold;
   margin: 0.75rem 0;
+  color: var(--chili);
 }
 
 .meal-item-description {
@@ -120,7 +142,7 @@ h1 {
   background-color: var(--gold);
   color: var(--on-gold);
   border: 1px solid var(--gold-edge);
-  font-size: 0.9rem;
+  font-size: 9px;
   font-weight: bold;
   padding: 0.5rem 2rem;
   margin: 0;
@@ -129,6 +151,20 @@ h1 {
 
 .meal-item-actions {
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.meal-item-actions .button {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  padding: 0;
+  overflow: hidden;
+  font-size: 8px;
+  line-height: 16px;
 }
 
 .cart h2 {
@@ -178,17 +214,16 @@ h1 {
 
 .cart-item-actions {
   display: flex;
-  gap: 1rem;
+  gap: 2px;
   align-items: center;
 }
 
-.cart-item-actions button {
+.qty-hit {
   cursor: pointer;
-  font-size: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  font-size: 9px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: none;
   background-color: var(--leaf-strong);
   color: var(--on-green);
   display: flex;
@@ -196,8 +231,8 @@ h1 {
   align-items: center;
 }
 
-.cart-item-actions button:hover,
-.cart-item-actions button:active {
+.qty-hit:hover,
+.qty-hit:active {
   background-color: var(--leaf-strong-hover);
   color: var(--on-green);
 }
@@ -217,9 +252,12 @@ h1 {
   width: 100%;
   max-width: 20rem;
   font: inherit;
+  font-size: 10px;
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid var(--field-border);
+  color: var(--ink);
+  background-color: #fff;
 }
 
 .control-row {
@@ -228,18 +266,24 @@ h1 {
   gap: 1rem;
 }
 
-.button {
+.button,
+.fake-button {
   font: inherit;
+  font-size: 9px;
+  line-height: 1;
+  display: inline-block;
   cursor: pointer;
   background-color: var(--delivery-red);
   border: 1px solid var(--delivery-red);
   color: var(--on-red);
-  padding: 0.5rem 1.5rem;
+  padding: 1px 3px;
   border-radius: 4px;
 }
 
 .button:hover,
-.button:active {
+.button:active,
+.fake-button:hover,
+.fake-button:active {
   background-color: var(--delivery-red-hover);
   border-color: var(--delivery-red-hover);
   color: var(--on-red);
@@ -247,6 +291,7 @@ h1 {
 
 .text-button {
   font: inherit;
+  font-size: 9px;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -288,8 +333,9 @@ h1 {
   border-radius: 6px;
 }
 
-.error h2 {
+.error-title {
   margin: 0;
+  font-size: 11px;
 }
 
 .error p {

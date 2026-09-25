@@ -58,7 +58,7 @@ export default function Checkout() {
 
   let actions = (
     <>
-      <Button type="button" textOnly onClick={handleClose}>
+      <Button className="text-button" onClick={handleClose}>
         Close
       </Button>
       <Button>Submit Order</Button>

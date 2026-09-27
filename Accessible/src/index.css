@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Lato:wght@400;700&display=swap');
 
+/*
+ * WCAG 2.2 presentation for this UI. 
+ *
+ * 1.4.3 Contrast (Minimum) (AA): text pairs in use are above 4.5:1.
+ *   ink #14281c on the page, card, and modal backgrounds: 13.6:1 to 15.6:1
+ *   chili #9f1d1d on those backgrounds: 7.2:1 to 7.9:1
+ *   white #ffffff on delivery red #c4161c: 6.0:1 (hover #9a1016 is 8.5:1)
+ *   #1c1400 on gold #f0c014: 10.7:1
+ *   leaf #0e6b34 on the page and modal backgrounds: 6.0:1 to 6.5:1
+ *   white on leaf-strong #146b32: 6.6:1
+ *   error text #7a1a1a on #fde8e6: 9.0:1
+ *
+ * 1.4.11 Non-text Contrast (AA): UI boundaries are above 3:1.
+ *   field border #3d5648 on the modal: 7.9:1
+ *   delivery red #c4161c on the page background: 5.5:1
+ *   leaf-strong #146b32 on the modal: 6.5:1
+ *   gold edge #7a5c00 on gold #f0c014: 3.7:1
+ *
+ * 1.4.1 Use of Color (A): price, errors, and actions include text, not colour alone.
+ * 1.4.4 Resize Text (AA) and 1.4.12 Text Spacing (AA): font sizes are rem, and
+ *   text blocks are not given a fixed height. overflow:hidden on .meal-item
+ *   only clips the rounded image.
+ * 2.4.7 Focus Visible (AA): these rules do not remove the user-agent outline.
+ * 2.4.11 Focus Not Obscured (Minimum) (AA): #main-header is in normal flow.
+ * 2.5.8 Target Size (Minimum) (AA): .cart-item-actions button is 1.5rem by 1.5rem
+ *   (24 by 24 CSS pixels at the default root font size).
+ * 1.4.10 Reflow (AA): #meals uses minmax(min(20rem, 100%), 1fr), so a column
+ *   can shrink to the grid. .control-row wraps, and each field can shrink.
+ * 2.2.2 Pause, Stop, Hide (A) and 2.3.1 Three Flashes (A): fade-slide-up lasts 0.3s
+ *   and does not flash.
+ */
+
 * {
   box-sizing: border-box;
 }
@@ -42,6 +74,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 3rem 10%;
+  background-color: var(--page-top);
 }
 
 #main-header #title {
@@ -80,7 +113,7 @@ h1 {
   margin: 2rem auto;
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -224,8 +257,25 @@ h1 {
 
 .control-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 1rem;
+  column-gap: 1rem;
+}
+
+.review-details {
+  margin: 0 0 1rem;
+}
+
+.review-details div {
+  margin: 0.35rem 0;
+}
+
+.review-details dt {
+  font-weight: bold;
+}
+
+.review-details dd {
+  margin: 0;
 }
 
 .button {

@@ -17,6 +17,13 @@ export default function Header() {
     }
 
     return (
+        /*
+         * WCAG 2.2 1.1.1 Non-text Content (A): the logo image has a text alternative.
+         * 1.3.1 Info and Relationships (A): header and nav landmarks, with one h1.
+         * 2.4.6 Headings and Labels (AA): the h1 names the page.
+         * 2.5.3 Label in Name (A) and 4.1.2 Name, Role, Value (A): the cart control is a
+         * button whose accessible name is the visible text, including the item count.
+         */
         <header id="main-header">
             <div id="title">
                 <img src={logoImg} alt="A restaurant logo" />

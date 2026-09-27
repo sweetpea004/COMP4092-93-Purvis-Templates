@@ -25,12 +25,18 @@ export default function Cart() {
     }
 
     return (
+        /*
+         * WCAG 2.2 2.4.6 Headings and Labels (AA): the dialog content is headed
+         * "Your Cart". Close and Go to Checkout name their actions (2.5.3, A).
+         * 1.3.1 Info and Relationships (A): line items are a list.
+         */
         <Modal 
             className="cart" 
+            labelledBy="cart-title"
             onClose={userProgressCtx.progress === 'cart' ? handleCloseCart : null} 
             open={userProgressCtx.progress === 'cart'}
         >
-            <h2>Your Cart</h2>
+            <h2 id="cart-title">Your Cart</h2>
             <ul>
                 {cartCtx.items.map((item) => 
                     <CartItem 

@@ -10,6 +10,7 @@ function App() {
     <CartContextProvider>
       <UserProgressContextProvider>
         <Header/>
+        {/* WCAG 2.2 1.3.1 Info and Relationships (A): main landmark for the order UI. */}
         <main>
           <Meals/>
           <Cart/>

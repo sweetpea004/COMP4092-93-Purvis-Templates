@@ -12,7 +12,11 @@ export default function Meals() {
     } = useHttp('http://localhost:3000/meals', requestConfig, []);
 
     if (isLoading) {
-        return <p className="center">Fetching meals...</p>
+        /*
+         * WCAG 2.2 4.1.3 Status Messages (AA): role="status" announces loading
+         * without moving focus.
+         */
+        return <p className="center" role="status">Fetching meals...</p>
     }
 
     if (error) {
@@ -24,6 +28,7 @@ export default function Meals() {
     // }
 
     return (
+        /* WCAG 2.2 1.3.1 Info and Relationships (A): meals are a list of items. */
         <ul id="meals">
             {loadedMeals.map((meal) => 
                 <Meal key={meal.id} meal={meal}/>

@@ -30,7 +30,7 @@ export default function Header() {
                 <h1>Food Order</h1>
             </div>
             <nav>
-                <Button textOnly onClick={handleShowCart}>Cart ({totalCartItems})</Button>
+                <Button id="cart-toggle" textOnly onClick={handleShowCart}>Cart ({totalCartItems})</Button>
             </nav>
         </header>
     );

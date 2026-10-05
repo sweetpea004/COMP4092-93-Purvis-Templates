@@ -23,7 +23,7 @@ export default function Header() {
                 <div className="site-title">Food Order</div>
             </div>
             <nav>
-                <Button textOnly onClick={handleShowCart}>
+                <Button id="cart-toggle" textOnly onClick={handleShowCart}>
                     <span aria-hidden="true">Cart ({totalCartItems})</span>
                 </Button>
                 <Button textOnly onClick={handleShowCart}>+</Button>

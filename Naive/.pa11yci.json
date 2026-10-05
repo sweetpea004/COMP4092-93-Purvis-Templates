@@ -22,7 +22,7 @@
       "runners": ["axe", "htmlcs"],
       "actions": [
         "wait for element #meals to be visible",
-        "click element #main-header nav button",
+        "click element #cart-toggle",
         "wait for element dialog.modal[open] to be visible"
       ]
     },

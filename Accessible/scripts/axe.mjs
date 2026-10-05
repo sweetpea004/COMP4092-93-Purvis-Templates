@@ -3,6 +3,10 @@ import { AxePuppeteer } from '@axe-core/puppeteer';
 
 const wcag21aa = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
+// The cart control carries this id so the scenarios keep working as the header
+// gains other controls.
+const cartToggle = '#cart-toggle';
+
 const scenarios = [
   {
     name: 'http://localhost:5173/',
@@ -16,7 +20,7 @@ const scenarios = [
     tags: wcag21aa,
     async prepare(page) {
       await openMenu(page);
-      await page.click('#main-header nav button');
+      await page.click(cartToggle);
       await page.waitForSelector('dialog.modal[open]', { visible: true });
     },
   },
@@ -72,8 +76,33 @@ try {
   }
 
   for (const scenario of scenarios) {
-    await scenario.prepare(page);
-    const results = await check(new AxePuppeteer(page), scenario).analyze();
+    let results;
+
+    try {
+      await scenario.prepare(page);
+      results = await check(new AxePuppeteer(page), scenario).analyze();
+    } catch (error) {
+      failed += 1;
+      errors += 1;
+      report[scenario.name] = [
+        {
+          code: 'scenario-setup-failed',
+          type: 'error',
+          impact: null,
+          message: error.message,
+          context: null,
+          selector: null,
+          helpUrl: null,
+        },
+      ];
+
+      if (!json) {
+        console.log(` > ${scenario.name} - not scanned: ${error.message}`);
+      }
+
+      continue;
+    }
+
     const found = [...issues(results, 'error'), ...issues(results, 'incomplete')];
     const errorCount = found.filter((issue) => issue.type === 'error').length;
     report[scenario.name] = found;

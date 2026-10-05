@@ -96,7 +96,7 @@ export default function Checkout() {
         labelledBy="order-success-title"
       >
         <h2 id="order-success-title" >Success!</h2>
-        <p role="status">Your order was submitted successfully.</p>
+        <output>Your order was submitted successfully.</output>
         <p>
           We will get back to you with more details via email within the next
           few minutes.
@@ -157,7 +157,7 @@ export default function Checkout() {
           {error && !isLoading && <Error title="Failed to submit order" message={error} />}
           <p className="modal-actions">
             {isLoading ? (
-              <span role="status">Sending order data...</span>
+              <output>Sending order data...</output>
             ) : (
               <>
                 <Button type="button" textOnly onClick={handleBack}>Go Back</Button>
@@ -180,7 +180,7 @@ export default function Checkout() {
           <Input label="City" type="text" id="city" autocomplete="address-level2"/>
         </div>
 
-        {error && !confirming && <Error role="alert" title="Failed to submit order" message={error} />}
+        {error && !confirming && <Error title="Failed to submit order" message={error} />}
 
         <p className="modal-actions">{actions}</p>
       </form>

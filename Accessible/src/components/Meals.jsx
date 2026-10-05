@@ -13,10 +13,10 @@ export default function Meals() {
 
     if (isLoading) {
         /*
-         * WCAG 2.2 4.1.3 Status Messages (AA): role="status" announces loading
+         * WCAG 2.2 4.1.3 Status Messages (AA): output announces loading
          * without moving focus.
          */
-        return <p className="center" role="status">Fetching meals...</p>
+        return <output className="center" >Fetching meals...</output>
     }
 
     if (error) {

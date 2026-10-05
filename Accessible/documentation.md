@@ -91,4 +91,4 @@ The claim covers the Accessible food-order UI: the meal list, the cart dialog, a
 | Criterion | Level | Result | Where this UI addresses it |
 | --------- | ----- | ------ | -------------------------- |
 | 4.1.2 Name, Role, Value | A | Meets | Buttons and inputs use native elements, so role and value come from the browser and each input's name comes from its label. `Modal.jsx` sets `aria-labelledby`. Cart, checkout, confirmation, and success each point that attribute at their `h2`. |
-| 4.1.3 Status Messages | AA | Meets | "Fetching meals..." and "Sending order data..." use `role="status"`. The success paragraph uses `role="status"`. `Error` uses `role="alert"`. These messages are announced without moving focus. |
+| 4.1.3 Status Messages | AA | Meets | "Fetching meals..." and "Sending order data..." use `<output>`. These messages are announced without moving focus. |

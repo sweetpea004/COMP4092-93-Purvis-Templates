@@ -6,6 +6,8 @@ const wcag21aa = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 // The cart control carries this id so the scenarios keep working as the header
 // gains other controls.
 const cartToggle = '#cart-toggle';
+const addMeal = '.meal-item:first-of-type .meal-item-actions .button';
+const goToCheckout = '#go-to-checkout';
 
 const scenarios = [
   {
@@ -21,7 +23,14 @@ const scenarios = [
     async prepare(page) {
       await openMenu(page);
       await page.click(cartToggle);
-      await page.waitForSelector('dialog.modal[open]', { visible: true });
+      await page.waitForSelector('.modal-backdrop.open', { visible: true });
+    },
+  },
+  {
+    name: 'http://localhost:5173/?checkout-open',
+    tags: wcag21aa,
+    async prepare(page) {
+      await openCheckout(page);
     },
   },
   {
@@ -36,6 +45,15 @@ const scenarios = [
 async function openMenu(page) {
   await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
   await page.waitForSelector('#meals', { visible: true });
+}
+
+async function openCheckout(page) {
+  await openMenu(page);
+  await page.click(addMeal);
+  await page.click(cartToggle);
+  await page.waitForSelector('.modal-backdrop.open', { visible: true });
+  await page.click(goToCheckout);
+  await page.waitForSelector('#checkout-title', { visible: true });
 }
 
 function check(builder, scenario) {

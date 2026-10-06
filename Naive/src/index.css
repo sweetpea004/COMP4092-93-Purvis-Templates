@@ -303,6 +303,20 @@ body {
   color: var(--leaf-hover);
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
 .modal {
   background-color: var(--modal);
   color: var(--ink);
@@ -313,10 +327,6 @@ body {
   width: 80%;
   max-width: 40rem;
   animation: fade-slide-up 0.3s ease-out forwards;
-}
-
-.modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.55);
 }
 
 .center {

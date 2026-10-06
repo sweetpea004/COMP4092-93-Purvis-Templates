@@ -27,6 +27,18 @@
       ]
     },
     {
+      "url": "http://localhost:5173/?checkout-open",
+      "runners": ["axe", "htmlcs"],
+      "actions": [
+        "wait for element #meals to be visible",
+        "click element .meal-item:first-of-type .meal-item-actions button",
+        "click element #cart-toggle",
+        "wait for element dialog.modal[open] to be visible",
+        "click element #go-to-checkout",
+        "wait for element #checkout-title to be visible"
+      ]
+    },
+    {
       "url": "http://localhost:5173/?wcag22",
       "runners": ["axe"],
       "rules": ["target-size"],

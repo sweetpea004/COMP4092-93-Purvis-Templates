@@ -50,7 +50,7 @@ export default function Cart() {
             <p className="modal-actions">
                 <Button textOnly onClick={handleCloseCart}>Close</Button>
                 {cartCtx.items.length > 0 && 
-                    <Button onClick={handleOpenCheckout}>Go to Checkout</Button>
+                    <Button id="go-to-checkout" onClick={handleOpenCheckout}>Go to Checkout</Button>
                 }
             </p>
         </Modal>

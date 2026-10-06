@@ -308,6 +308,11 @@ h1 {
   color: var(--leaf-hover);
 }
 
+*:focus {
+  outline: 2px solid var(--delivery-red-hover);
+  outline-offset: 2px;
+}
+
 .modal {
   background-color: var(--modal);
   color: var(--ink);

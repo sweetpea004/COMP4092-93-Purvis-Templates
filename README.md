@@ -74,8 +74,13 @@ Report Errors with reference to code base
 npm run lint
 ```
 
-## Credits
+## Credits & Baseline Codebase Acknowledgments
 
-Base React app Food Ordering Webapp and assets from [React - The Complete Guide (incl. Next.js, Redux) Udemy Course](https://www.udemy.com/course/react-the-complete-guide-incl-redux/) by [Academind](https://www.udemy.com/user/academind/) [Maximilian Schwarzmüller](https://www.udemy.com/user/maximilian-schwarzmuller/)
-- This includes functionality and user interactions with page elements.
-- It has been modified to be more or less Accessible for testing purposes
+* **Application Origin:** The front-end application logic, component structure, and state management were implemented by me, following the design pattern and starter backend/assets from the course **["React - The Complete Guide (incl. Next.js, Redux) Udemy Course"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)** by [Academind](https://www.udemy.com/user/academind/) / [Maximilian Schwarzmüller](https://www.udemy.com/user/maximilian-schwarzmuller/)
+* **License:** Starter code scaffolds and provided assets are used under the terms of the **MIT License**.
+
+### Experimental Modifications for Thesis Research
+This web application serves as a standardized benchmark for evaluating Large Language Model (LLM) code generation. For research purposes, the codebase has been adapted into two experimental variants:
+
+1. **Accessibility-Naive Baseline:** Modified to deliberately incorporate common real-world accessibility anti-patterns (e.g., non-semantic interactive elements, missing form label associations, incomplete keyboard interaction models).
+2. **Accessibility-Compliant Baseline:** Refactored and fully audited to conform strictly with **WCAG 2.2 Level AA** standards.

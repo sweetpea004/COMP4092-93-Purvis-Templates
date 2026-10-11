@@ -78,7 +78,7 @@ npm run lint -- Accessible
 * **License:** Starter code scaffolds and provided assets are used under the terms of the **MIT License**.
 
 ### Experimental Modifications for Thesis Research
-This web application serves as a standardized benchmark for evaluating Large Language Model (LLM) code generation. For research purposes, the codebase has been adapted into two experimental variants:
+This web application serves as a standardised benchmark for evaluating Large Language Model (LLM) code generation. For research purposes, the codebase has been adapted into two experimental variants:
 
 1. **Accessibility-Naive Baseline:** Modified to deliberately incorporate common real-world accessibility anti-patterns (e.g., non-semantic interactive elements, missing form label associations, incomplete keyboard interaction models).
 2. **Accessibility-Compliant Baseline:** Refactored and fully audited to conform strictly with **WCAG 2.2 Level AA** standards.

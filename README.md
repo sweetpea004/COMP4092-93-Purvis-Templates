@@ -8,70 +8,68 @@
 
 ## Running Automated Testing
 
-### Before using any of the following commands, cd into the correct folder:
+Run these commands from the repository root. Each command takes the site to evaluate: `Accessible` or `Naive`.
+
+The scanners live in `testing/` and are not part of either site. `Accessible` and `Naive` only contain the food-order app and what it needs to run.
+
+Install the harness once, from the root:
+
 ```
-cd Accessible
-```
-or
-```
-cd Naive
+npm install
 ```
 
 ### Dynamic Runtime DOM Scanners:
 
-#### pa11y: 
+#### pa11y
 
-Uses axe and HTML_CodeSniffer
+Uses axe and HTML_CodeSniffer.
 
-Starts the backend and the vite server, runs pa11y, shuts down both
-```
-npm run test:a11y
-```
+Starts the chosen site and its backend, runs pa11y, then shuts both down:
 
-Runs checks with site already running
 ```
-npm run pa11y
+npm run test:pa11y -- Accessible
 ```
 
-Report errors in JSON form in terminal (site must be running)
+Runs pa11y when that site is already running on port 5173, with the backend on port 3000:
+
 ```
-npx pa11y-ci --json
+npm run pa11y -- Accessible
 ```
 
-Report errors in JSON form save to file (site must be running)
+Write the report as JSON. Add `--silent` so npm's own banners stay out of the file:
+
 ```
-npx pa11y-ci --json > pa11y-results.json
+npm run test:pa11y:json -- Naive --silent > pa11y-results.json
 ```
 
-#### axe-core:
+#### axe-core
 
-Starts the backend and the vite server, runs pa11y, shuts down both
-```
-npm run test:axe
-```
+Starts the chosen site and its backend, runs axe-core, then shuts both down:
 
-Runs checks with site already running
 ```
-npm run axe
+npm run test:axe -- Naive
 ```
 
-Report errors in JSON form in terminal (site must be running)
+Runs axe-core when that site is already running:
+
 ```
-npm run axe:json --silent
+npm run axe -- Accessible
 ```
 
-Report errors in JSON form save to file (site must be running)
+Write the report as JSON:
+
 ```
-npm run axe:json --silent > axe-results.json
+npm run test:axe:json -- Naive --silent > axe-results.json
 ```
 
 ### Static AST Scanner:
 
-#### ESLint:
+#### ESLint
 
-Report Errors with reference to code base
+Reports jsx-a11y findings against the chosen site. Nothing is started.
+
 ```
-npm run lint
+npm run lint -- Accessible
 ```
 
 ## Credits & Baseline Codebase Acknowledgments

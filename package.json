@@ -1,0 +1,31 @@
+{
+  "name": "evaluation-harness",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "node testing/run.mjs lint",
+    "pa11y": "node testing/run.mjs pa11y",
+    "pa11y:json": "node testing/run.mjs pa11y --json",
+    "test:pa11y": "node testing/run.mjs pa11y --serve",
+    "test:pa11y:json": "node testing/run.mjs pa11y --json --serve",
+    "axe": "node testing/run.mjs axe",
+    "axe:json": "node testing/run.mjs axe --json",
+    "test:axe": "node testing/run.mjs axe --serve",
+    "test:axe:json": "node testing/run.mjs axe --json --serve"
+  },
+  "devDependencies": {
+    "@axe-core/puppeteer": "^4.13.0",
+    "axe-core": "^4.13.0",
+    "eslint": "^10.12.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.13.0",
+    "pa11y-ci": "^4.1.1",
+    "puppeteer": "^25.11.0"
+  },
+  "overrides": {
+    "eslint-plugin-jsx-a11y": {
+      "eslint": "$eslint"
+    }
+  }
+}

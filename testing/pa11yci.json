@@ -31,6 +31,19 @@
       "runners": ["axe"],
       "rules": ["target-size"],
       "actions": ["wait for element #meals to be visible"]
+    },
+    {
+      "url": "http://localhost:5173/?checkout-open",
+      "runners": ["axe", "htmlcs"],
+      "actions": [
+        "wait for element #meals to be visible",
+        "click element #add-to-cart-m1",
+        "click element #cart-toggle",
+        "wait for element .cart to be visible",
+        "wait for element #go-to-checkout to be visible",
+        "click element #go-to-checkout",
+        "wait for element #checkout-title to be visible"
+      ]
     }
   ]
 }

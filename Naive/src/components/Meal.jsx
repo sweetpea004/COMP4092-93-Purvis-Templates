@@ -21,7 +21,6 @@ export default function Meal({ meal }) {
                 </div>
                 <div className="meal-item-actions">
                     <Button id={`add-to-cart-${meal.id}`} onClick={handleAddMealToCart}>Add</Button>
-                    <Button onClick={handleAddMealToCart}>+</Button>
                 </div>
             </div>
         </li>

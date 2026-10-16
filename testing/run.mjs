@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
+import { styleText } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -50,6 +51,11 @@ function stop(child) {
   } catch {
     // The process has already exited.
   }
+}
+
+function cleanLintSummary() {
+  const summary = '\u2714 0 problems (0 errors, 0 warnings)';
+  return styleText('green', styleText('bold', summary), { validateStream: true });
 }
 
 function run(commandArgs) {
@@ -103,7 +109,7 @@ async function withServers(scan) {
 
 async function scan() {
   if (command === 'lint') {
-    return run([
+    const code = await run([
       eslintCli,
       '-c',
       'testing/eslint.config.js',
@@ -113,6 +119,12 @@ async function scan() {
       '0',
       target,
     ]);
+
+    if (code === 0) {
+      console.log(`\n${cleanLintSummary()}`);
+    }
+
+    return code;
   }
 
   if (command === 'pa11y') {

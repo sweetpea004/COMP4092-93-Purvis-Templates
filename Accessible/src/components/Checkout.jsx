@@ -131,7 +131,7 @@ export default function Checkout() {
               </li>
             ))}
           </ul>
-          <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
+          <p>{`Total Amount: ${currencyFormatter.format(cartTotal)}`}</p>
           <dl className="review-details">
             <div>
               <dt>Full Name</dt>
@@ -170,7 +170,7 @@ export default function Checkout() {
 
       <form onSubmit={handleSubmit} hidden={confirming ? true : undefined}>
         <h2 id="checkout-title" >Checkout</h2>
-        <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
+        <p>{`Total Amount: ${currencyFormatter.format(cartTotal)}`}</p>
 
         <Input label="Full Name" type="text" id="name" autocomplete="name"/>
         <Input label="E-Mail Address" type="email" id="email" autocomplete="email"/>

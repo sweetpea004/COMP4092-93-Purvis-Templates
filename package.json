@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "puppeteer browsers install chrome && node node_modules/pa11y-ci/node_modules/puppeteer/lib/cjs/puppeteer/node/cli.js browsers install chrome",
     "lint": "node testing/run.mjs lint",
     "pa11y": "node testing/run.mjs pa11y",
     "pa11y:json": "node testing/run.mjs pa11y --json",

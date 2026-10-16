@@ -3,9 +3,10 @@ import { AxePuppeteer } from '@axe-core/puppeteer';
 
 const wcag21aa = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
-// The cart control carries this id so the scenarios keep working as the header
-// gains other controls.
 const cartToggle = '#cart-toggle';
+const addToCart = '#add-to-cart-m1';
+const goToCheckout = '#go-to-checkout';
+const checkoutTitle = '#checkout-title';
 
 const scenarios = [
   {
@@ -31,6 +32,28 @@ const scenarios = [
       await openMenu(page);
     },
   },
+  {
+    name: 'http://localhost:5173/?checkout-open',
+    tags: wcag21aa,
+    async prepare(page) {
+      await openMenu(page);
+      await page.click(addToCart);
+      await page.click(cartToggle);
+      await page.waitForSelector('.cart', { visible: true });
+      await page.waitForSelector(goToCheckout, { visible: true });
+      await page.click(goToCheckout);
+      await page.waitForSelector(checkoutTitle, { visible: true });
+      await page.waitForFunction((selector) => {
+        const modal = document.querySelector(selector)?.closest('.modal');
+        if (!modal) {
+          return false;
+        }
+
+        const animations = modal.getAnimations();
+        return animations.length > 0 && animations.every((animation) => animation.playState === 'finished');
+      }, {}, checkoutTitle);
+    },
+  }
 ];
 
 async function openMenu(page) {

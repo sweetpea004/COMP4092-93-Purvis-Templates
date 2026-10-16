@@ -31,7 +31,7 @@ export default function Cart() {
             open={userProgressCtx.progress === 'cart'}
         >
             <h2>Your Cart</h2>
-            <ul>
+            <div>
                 {cartCtx.items.map((item) => 
                     <CartItem 
                         key={item.id} 
@@ -39,7 +39,7 @@ export default function Cart() {
                         onIncrease={() => cartCtx.addItem(item)} 
                         onDecrease={() => cartCtx.removeItem(item.id)}/>
                 )}
-            </ul>
+            </div>
             <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
             <p className="modal-actions">
                 <Button className="text-button" onClick={handleCloseCart}>Close</Button>

@@ -20,8 +20,7 @@ export default function Meal({ meal }) {
                     <div className="meal-item-description">{meal.description}</div>
                 </div>
                 <div className="meal-item-actions">
-                    <Button onClick={handleAddMealToCart}>Add</Button>
-                    <Button onClick={handleAddMealToCart}>+</Button>
+                    <Button id={`add-to-cart-${meal.id}`} onClick={handleAddMealToCart}>Add</Button>
                 </div>
             </div>
         </li>

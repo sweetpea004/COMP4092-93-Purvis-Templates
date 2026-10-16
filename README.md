@@ -6,6 +6,10 @@
 ### Supervisor/s: Dr Ansgar Fehnker
 ### Macquarie University
 
+## Architecture
+
+[architecture.md](architecture.md)
+
 ## Running Automated Testing
 
 Run these commands from the repository root. Each command takes the site to evaluate: `Accessible` or `Naive`.

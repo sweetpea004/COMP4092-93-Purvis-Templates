@@ -39,7 +39,7 @@ Fill this after insertion. Net change is same-day baseline count minus the count
 
 | Run | M1 ESLint | M2 axe / pa11y | M3 highest impact | M4 keyboard | M5 Narrator | M6 net change | M7 rules added or removed | Other files the agent edited |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A 1mc01GRKA |  |  |  |  |  |  |  |  |
-| B 1mc01GRKB |  |  |  |  |  |  |  |  |
-| C 1mc01GRKC |  |  |  |  |  |  |  |  |
-| D 1mc01GRKD |  |  |  |  |  |  |  |  |
+| A (1mc01GRKA) |  |  |  |  |  |  |  |  |
+| B (1mc01GRKB) |  |  |  |  |  |  |  |  |
+| C (1mc01GRKC) |  |  |  |  |  |  |  |  |
+| D (1mc01GRKD) |  |  |  |  |  |  |  |  |

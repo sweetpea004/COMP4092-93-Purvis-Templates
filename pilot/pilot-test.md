@@ -1,8 +1,4 @@
-# Pilot key
-
-This file stays in the thesis repository. The generation chats use only the folders below.
-
-Open each folder on its own, in a new Cursor window and a new chat. Leave `C:\Users\Computer\Documents\fo-runs` closed, because that parent holds every run.
+# Pilot
 
 | Folder | Condition | Prompt | Site inside the folder |
 | --- | --- | --- | --- |
@@ -11,7 +7,8 @@ Open each folder on its own, in a new Cursor window and a new chat. Leave `C:\Us
 | `C:\Users\Computer\Documents\fo-runs\1mc01GRKC` | C | Aware | Naive food-order app |
 | `C:\Users\Computer\Documents\fo-runs\1mc01GRKD` | D | Aware | Compliant food-order app |
 
-Order is A, then B, then C, then D. Each folder is a clean app with no git history, no scanner harness, and no README. The compliant folders still contain the WCAG comments and `documentation.md`, because that documentation is part of the compliant site.
+Generate components in order: A, then B, then C, then D. Each folder is only either the Naive or Compliant app with no git history, no test scanners, and no README. 
+- The compliant folders still contain the WCAG comments and `documentation.md`, because that documentation is part of the compliant site.
 
 The agent’s sampling temperature cannot be set to 0.2, this pilot uses default Cursor sampling.
 
@@ -35,11 +32,9 @@ Use the WCAG 2.2 AA accessibility standards and best practices. The component sh
 
 ## Score sheet
 
-Fill this after insertion. Net change is same-day baseline count minus the count after insertion.
-
 Before test scores for Baseline templates:
-- Naive: eslint = 6, axe = 392, pa11y = 924
-- Accessible: eslint = 0, axe = 0, pa11y = 0
+- Naive: eslint = 6, axe = 392, pa11y = 924, therefore total = 1,322
+- Accessible: eslint = 0, axe = 0, pa11y = 0, therefore total = 0
 
 | Run | M1 ESLint | M2 axe / pa11y | M3 highest impact | M4 keyboard | M5 Narrator | M6 net change | M7 Instances of Errors | Other files the agent edited |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

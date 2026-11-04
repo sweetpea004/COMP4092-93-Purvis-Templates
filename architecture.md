@@ -1,5 +1,5 @@
 ```mermaid
-  %%{init: {'theme': 'base', 'themeVariables': {'darkMode': false, 'background': '#ffffff', 'mainBkg': '#ffffff', 'secondBkg': '#ffffff', 'clusterBkg': '#ffffff', 'edgeLabelBackground': '#ffffff', 'lineColor': '#334155'}, 'themeCSS': 'svg { background-color: #ffffff !important; } .background, svg > rect.background { fill: #ffffff !important; }'}}%%
+  %%{init: {"theme": "base", "themeVariables": {"fontSize": "40px", "fontFamily": "Arial, sans-serif", "darkMode": false, "background": "#ffffff", "mainBkg": "#ffffff", "secondBkg": "#ffffff", "clusterBkg": "#ffffff", "edgeLabelBackground": "#ffffff", "lineColor": "#334155"}, "flowchart": {"useMaxWidth": false, "htmlLabels": true, "nodeSpacing": 18, "rankSpacing": 34, "padding": 8, "diagramPadding": 4}, "themeCSS": "svg { background-color: #ffffff !important; } .background, svg > rect.background { fill: #ffffff !important; } .nodeLabel, .edgeLabel, .cluster-label, text { font-family: Arial, sans-serif !important; font-size: 22px !important; }"}}%%
   flowchart TD
 
   subgraph group_accessible["Accessible app"]
@@ -50,6 +50,8 @@
   node_a_checkout -->|"reads and clears"| node_a_state
   node_a_checkout -->|"reads progress"| node_a_progress
   node_a_checkout -->|"submits order"| node_a_http
+  %% Layout only: keeps the two checkout labels from stacking.
+  node_a_http ~~~ node_a_progress
   node_a_http -.->|"sends request"| node_backend
   node_user -->|"uses"| node_n_app
   node_n_app -->|"renders"| node_n_meals
@@ -63,6 +65,8 @@
   node_n_checkout -->|"reads and clears"| node_n_state
   node_n_checkout -->|"reads progress"| node_n_progress
   node_n_checkout -->|"submits order"| node_n_http
+  %% Layout only: keeps the two checkout labels from stacking.
+  node_n_http ~~~ node_n_progress
   node_n_http -.->|"sends request"| node_backend
   node_evaluator -->|"runs scans"| node_scanner
   node_evaluator -->|"runs lint"| node_static_scan

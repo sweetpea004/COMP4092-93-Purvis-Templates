@@ -1,8 +1,4 @@
-# Pilot key
-
-This file stays in the thesis repository. The generation chats use only the folders below.
-
-Open each folder on its own, in a new Cursor window and a new chat. Leave `C:\Users\Computer\Documents\fo-runs` closed, because that parent holds every run.
+# Pilot
 
 | Folder | Condition | Prompt | Site inside the folder |
 | --- | --- | --- | --- |
@@ -11,7 +7,8 @@ Open each folder on its own, in a new Cursor window and a new chat. Leave `C:\Us
 | `C:\Users\Computer\Documents\fo-runs\1mc01GRKC` | C | Aware | Naive food-order app |
 | `C:\Users\Computer\Documents\fo-runs\1mc01GRKD` | D | Aware | Compliant food-order app |
 
-Order is A, then B, then C, then D. Each folder is a clean app with no git history, no scanner harness, and no README. The compliant folders still contain the WCAG comments and `documentation.md`, because that documentation is part of the compliant site.
+Generate components in order: A, then B, then C, then D. Each folder is only either the Naive or Compliant app with no git history, no test scanners, and no README. 
+- The compliant folders still contain the WCAG comments and `documentation.md`, because that documentation is part of the compliant site.
 
 The agent’s sampling temperature cannot be set to 0.2, this pilot uses default Cursor sampling.
 
@@ -35,18 +32,16 @@ Use the WCAG 2.2 AA accessibility standards and best practices. The component sh
 
 ## Score sheet
 
-Fill this after insertion. Net change is same-day baseline count minus the count after insertion.
-
 Before test scores for Baseline templates:
-- Naive: eslint = 6, axe = 392, pa11y = 924
-- Accessible: eslint = 0, axe = 0, pa11y = 0
+- Naive: eslint = 6, axe = 392, pa11y = 924, therefore total = 1,322
+- Accessible: eslint = 0, axe = 0, pa11y = 0, therefore total = 0
 
-| Run | M1 ESLint | M2 axe / pa11y | M3 highest impact | M4 keyboard | M5 Narrator | M6 net change | M7 Instances of Errors | Other files the agent edited |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A (1mc01GRKA) | 6 | 402 / 952 | Critical | X | X | +38 | Colour Contrast | App.jsx and index.css |
-| B (1mc01GRKB) | 0 | 0 / 8 | Serious | ✓ | ✓ | +8 | N/A | App.jsx and index.css |
-| C (1mc01GRKC) | 0 | 28 / 53 | Serious | X | X | -1,241 | Colour Contrast | App.jsx, useHTTPS.js, Meals.jsx, Meal.jsx, Header.jsx |
-| D (1mc01GRKD) | 0 | 0 / 22 | Serious | ✓ | ✓ | +22 | Colour Contrast | App.js, index.css, documentation.md |
+| Condition | Folder | M1 ESLint | M2 axe / pa11y | M3 highest impact | M4 keyboard | M5 Narrator | M6 net change | M7 Instances of Errors | Other files the agent edited |
+| --- | ------ | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | 1mc01GRKA | 6 | 402 / 952 | Critical | X | X | +38 | Colour Contrast, Keyboard controls, Screen Reading | App.jsx and index.css |
+| B | 1mc01GRKB | 0 | 0 / 8 | Serious | ✓ | ✓ | +8 | Colour Contrast | App.jsx and index.css |
+| C | 1mc01GRKC | 0 | 28 / 53 | Serious | X | X | -1,241 | Colour Contrast, Keyboard Controls, Screen Reading | App.jsx, useHTTPS.js, Meals.jsx, Meal.jsx, Header.jsx |
+| D | 1mc01GRKD | 0 | 0 / 22 | Serious | ✓ | ✓ | +22 | Colour Contrast | App.js, index.css, documentation.md |
 
 ### Notes: 
 - narrator completely skipped the main content every time I tried to get it to read it on Condition A (would read individual orders though)
@@ -72,5 +67,6 @@ Before test scores for Baseline templates:
 - Condition C ended up having better Add to cart buttons (Having the meal name with the button) than Condition D? Interesting.
 
 ### Things to improve in experiment:
-- Naive template add to cart buttons fails narrator in my opinion. They announce what they are correctly but they should indicate what item would be added if a user were to interact with it. In terms of this pilot I scored based on its ability to narrarate the added component (The main content).
-- The gradient background on the Accessible template, while nice, makes it really hard to test colour contrast ratios properly (false positive errors on pa11y)
+  - Accessible template add to cart buttons fails narrator in my opinion. They announce what they are correctly but they should indicate what item would be added if a user were to interact with it. In terms of this pilot I scored based on its ability to narrarate the added component (The main content).
+  - The gradient background on the Accessible template, while nice, makes it really hard to test colour contrast ratios properly (false positive errors on pa11y)
+  - When automating the process, I want to scan the json files in order to get a list of all the error types (or even the WCAG code) to add to the list in M7
